@@ -20,17 +20,20 @@ btn.addEventListener('click',()=>{
     
     function checkCountValue() {
         if (count === 10) {
-            console.log("Your Instagram post gained 10 followers! Congratulations!");
+            alert("Your Instagram post gained 10 followers! Congratulations!");
         } else if (count === 20) {
-            console.log("Your Instagram post gained 20 followers! Keep it up!");
+            alert("Your Instagram post gained 20 followers! Keep it up!");
         }
         }
 
 })
 
-reset.addEventListener('click',()=>{
+reset.addEventListener('mouseover',()=>{
+    function alertMessage (){
+        alert(`Don't get too close the reset button now`)
+    }
+    alertMessage()
     count = 0
-    
     console.log(`back to ${count}`)
 })
 
