@@ -15,8 +15,6 @@ function DisplayEmployees(){
 }
 
 DisplayEmployees();
-
-
 document.getElementById('DisplaySection').innerHTML= display
 
 let totalSalary= 0
@@ -25,7 +23,6 @@ function salarySum(){
     return totalSalary
 }
 salarySum()
-
 document.getElementById("Total").innerHTML = `${ totalSalary}`;
 
 
