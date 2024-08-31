@@ -30,7 +30,7 @@ btn.addEventListener('click',()=> {
         
             books.push(book)
             displayBooks(books)
-            avoidingRepetition(books)
+            avoidingRepetition(book)
             
     }else{
         alert(`Fill in all the information`)
@@ -49,11 +49,13 @@ function displayBooks(books){
     document.getElementById('bookDisplaySection').innerText = display
 }
 
-function avoidingRepetition(books){
+function avoidingRepetition(added_book){
+    let match;
     books.forEach(book => {
-        if(book.id === books.id){
-            books.unshift
+        if (book.id === added_book.id){
+            shift(added_book)
         }
     })
 }
+
 
