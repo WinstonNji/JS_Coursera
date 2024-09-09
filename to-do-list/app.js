@@ -1,10 +1,12 @@
 const form = document.getElementById('form');
 const resetBtn = document.getElementById('reset')
+let newItem = document.createElement("li");
 
 form.addEventListener('submit',event => {
     event.preventDefault()
 
     const list = document.getElementById('List');
+
     let userInput= String(document.getElementById('task').value.trim())
 
     function definedInput(userInput){
@@ -24,13 +26,12 @@ form.addEventListener('submit',event => {
     
 
     if(userInput === ''){
-        alert(`Please Enter a task before pressing Sumbit`)
+        alert(`Please Enter a task before pressing Submit`)
         userInput = window.prompt(`Enter a new task`).trim()
 
         createItem()
         
     }else{
-        
         createItem()
     }
 
@@ -39,7 +40,8 @@ form.addEventListener('submit',event => {
 
 resetBtn.addEventListener('click',()=> {
 
-    alert('List will be reset and empty')
+    window.open('List will be reset and empty')
     document.getElementById('List').textContent= ""
 })
+
 
