@@ -58,6 +58,7 @@ setTimeout(()=> {
     
             })
             .catch(error => {
+                document.querySelector('#tz').innerHTML = error
                 console.error("Error fetching geocoordinates:", error);
             });
     }
@@ -115,12 +116,11 @@ setTimeout(()=> {
 
                 // Filters the activities
                 activities.data.forEach(activity => {
-                    if(activity.shortDescription && activity.shortDescription !== `Unspecified` && activity.pictures[0]){
-                        
+                    
+                    if(activity.shortDescription && activity.shortDescription !== `Unspecified` && activity.pictures.length > 0){
+                        compatibleActivities.push(activity)
                     }
                 })
-
-                compatibleActivities.push(activity)
 
                 selectedActivities.length = 0; // Clear previous selections
 
@@ -136,6 +136,7 @@ setTimeout(()=> {
                 displayActivities(selectedActivities)
             })
             .catch(error => {
+                document.querySelector('#tz').innerHTML = error
                 console.error("Error Couldn't find activities:", error);
             });
         });
