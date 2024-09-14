@@ -33,7 +33,7 @@ function handleError(error){
     }
 }
 
-function fetchCityImg(city, callback){
+function fetchCityImg(city){
     fetch(`https://api.pexels.com/v1/search?query=${city}&per_page=2`,
             {headers: {Authorization: imageAPI_KEY}}
         ).then(response => {
@@ -54,7 +54,7 @@ function fetchCityImg(city, callback){
 
 }
 
-function fetchData(city,callback) {
+function fetchData(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`)
         .then(response => {
             if (!response.ok) {
