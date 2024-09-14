@@ -1,4 +1,3 @@
-import { displayActivities, displayTime } from "./display.js";
 
 const Geoapify_API_Key = "f016b4108e1a44049330464c23eb8625";
 const amadeus_API_Key = "AdNwBdRyzYk9VDGbVsqvGLD2bLTltlpq";  // Client ID
@@ -7,7 +6,7 @@ const compatibleActivities = []
 let selectedActivities = []
 const form = document.querySelector("form");
 
-setTimeout(()=> {
+
     document.querySelector('.clear-btn').addEventListener('click',() => {
         document.getElementById('tz').innerHTML = 'TimeZone and Recommendation Will Appear Here';
         document.getElementById("displayArea").textContent = '';
@@ -141,7 +140,49 @@ setTimeout(()=> {
             });
         });
     }
-},3000)
+
+    function displayActivities(selectedActivities){    
+        let display = '';
+    
+        selectedActivities.forEach(selectedActivity => {
+            display += `
+                            
+                            <div class="container">
+                                <img src="${selectedActivity.pictures}" alt="Image of ${selectedActivity.name}">
+                                <div class="containerText">
+                                    <h2>${selectedActivity.name}</h2>
+                                    <p>${selectedActivity.shortDescription}</p>
+                                    <button>Visit</button>
+                                </div>
+                            </div>
+            `
+    
+            document.getElementById("displayArea").innerHTML = display
+        })
+    }
+    // Updates the time
+    function displayTime(lat,lon){
+         let meridiem = ''
+            fetch(`https://timeapi.io/api/time/current/coordinate?latitude=${lat}&longitude=${lon}`).then(
+                response => {
+                    if(!response.ok){
+                        throw new Error("Couldn't get time for this location")
+                    }else{
+                        return response.json()
+                    }
+                }
+            ).then(data =>{
+                if(data.hour>12){
+                    meridiem = `AM`
+                }else{
+                    meridiem = `PM`
+                }
+        
+                setTimeout(()=> {
+                    document.querySelector('#tz').innerHTML = `Current Local Time(${data.timeZone}): ${data.time} ${meridiem}`
+                },3000)
+            })
+    }
 
 document.querySelector('#aboutUsNav').addEventListener('click',()=> {
     document.getElementById('aboutUs').style.paddingTop = '100px'
