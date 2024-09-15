@@ -3,9 +3,7 @@ const list = document.querySelector(".list")
 let index = 1
 
 let taskArray = [];
-let completedTask = []
-
-
+let completedTask = [];
 
 form.addEventListener('submit', event => {
     event.preventDefault()
@@ -18,8 +16,6 @@ form.addEventListener('submit', event => {
 
         displayArray()
         deleteTask()
-
-        console.log(taskArray)
 
         document.getElementById("userInput").value = ""
     }else{
@@ -46,7 +42,7 @@ function displayArray(){
         displayText += 
         `
             <li class="item">
-                    <input class= "checkBox" id="${task}" type="checkbox">
+                    <input class="checkBox" id="${task}" type="checkbox">
                     <label class="check-btn" for="${task}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="transparent"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                     </label>
@@ -64,12 +60,6 @@ function displayArray(){
     })
 }
 
-// function createNewTask(newTask){
-//     const task = document.createElement('li')
-//     task.innerHTML = userInputClarity(newTask)
-//     list.prepend(task)
-// }
-
 function deleteTask(){
     const deleteBtns = document.querySelectorAll('.deleteBtn')  
 
@@ -83,18 +73,6 @@ function deleteTask(){
 
             let listItem = deleteBtn.closest('.item'); // Finds the closest parent <li> with the class "item"
             listItem.remove();
-
-            console.log(taskArray)
-            
-            // console.log(taskId)
         })
     })
 }
- 
-
-
-
-
-
-
-
